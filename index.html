@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reproductor de Música</title>
+
+  <!-- Iconos Tabler -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <!-- Fuentes Google — cámbia estas por las que prefieras -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Hoja de estilos separada -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="player-wrap">
+
+    <!-- ==========================================
+         CARÁTULA + INFO DE LA CANCIÓN
+    =========================================== -->
+    <div class="album-section">
+      <div class="album-art" id="albumArt" style="background:#1e0a38;">🎵</div>
+      <div class="song-info">
+        <div class="song-title" id="songTitle">dani</div>
+        <div class="song-artist" id="songArtist">Luna Oscura</div>
+        <div class="song-genre" id="songGenre" style="background:#2a1050; color:#c990ff;">
+          Indie / Dream Pop
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         BARRA DE PROGRESO
+    =========================================== -->
+    <div class="progress-section">
+      <div class="time-row">
+        <span id="currentTime">0:00</span>
+        <span id="totalTime">3:58</span>
+      </div>
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-fill" id="progressFill" style="background:#c990ff;"></div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         CONTROLES: ANTERIOR / PLAY / SIGUIENTE
+    =========================================== -->
+    <div class="controls-section">
+
+      <!-- BOTÓN ANTERIOR -->
+      <button class="ctrl-btn" id="btnPrev" aria-label="Anterior">
+        <i class="ti ti-player-skip-back" style="font-size:20px;"></i>
+      </button>
+
+      <!-- BOTÓN PLAY / PAUSE -->
+      <button class="ctrl-btn play-btn" id="btnPlay" aria-label="Reproducir / Pausar">
+        <i class="ti ti-player-play" id="playIcon" style="font-size:22px; margin-left:2px;"></i>
+      </button>
+
+      <!-- BOTÓN SIGUIENTE -->
+      <button class="ctrl-btn" id="btnNext" aria-label="Siguiente">
+        <i class="ti ti-player-skip-forward" style="font-size:20px;"></i>
+      </button>
+
+    </div>
+
+    <!-- CONTROL DE VOLUMEN -->
+    <div class="volume-row">
+      <i class="ti ti-volume" style="font-size:15px; color:#444;"></i>
+      <input type="range" min="0" max="100" value="72" aria-label="Volumen">
+      <i class="ti ti-volume-2" style="font-size:15px; color:#444;"></i>
+    </div>
+
+    <!-- ==========================================
+         LISTA DE CANCIONES
+         Para agregar una canción: copia uno de estos
+         bloques y edita los atributos data-*
+    =========================================== -->
+    <div class="playlist-section">
+      <div class="playlist-header">Lista de reproducción</div>
+
+      <!-- CANCIÓN 1 -->
+      <div class="playlist-item active"
+           data-index="0"
+           data-title="dani"
+           data-artist="Luna Oscura"
+           data-dur="3:58"
+           data-genre="Indie / Dream Pop"
+           data-color="#2a1050"
+           data-text="#c990ff"
+           data-art="🎵"
+           data-artbg="#1e0a38"
+           data-accent="#c990ff">
+        <span class="track-num">1</span>
+        <div class="playing-dot" style="background:#c990ff;"></div>
+        <div class="track-mini-art" style="background:#1e0a38;">🎵</div>
+        <div class="track-details">
+          <div class="track-name">dani</div>
+          <div class="track-by">Luna Oscura</div>
+        </div>
+        <span class="track-dur">3:58</span>
+      </div>
+
+      <!-- CANCIÓN 2 -->
+      <div class="playlist-item"
+           data-index="1"
+           data-title="Neon Calles"
+           data-artist="Síntesis Colectiva"
+           data-dur="4:22"
+           data-genre="Synth / Electrónica"
+           data-color="#0a2a1a"
+           data-text="#44ff99"
+           data-art="🎛"
+           data-artbg="#061a0f"
+           data-accent="#44ff99">
+        <span class="track-num">2</span>
+        <div class="playing-dot" style="background:#44ff99;"></div>
+        <div class="track-mini-art" style="background:#061a0f;">🎛</div>
+        <div class="track-details">
+          <div class="track-name">Neon Calles</div>
+          <div class="track-by">Síntesis Colectiva</div>
+        </div>
+        <span class="track-dur">4:22</span>
+      </div>
+
+      <!-- CANCIÓN 3 -->
+      <div class="playlist-item"
+           data-index="2"
+           data-title="Polvo de Estrellas"
+           data-artist="El Último Eco"
+           data-dur="5:07"
+           data-genre="Post-Rock / Ambiental"
+           data-color="#1a1000"
+           data-text="#ffcc44"
+           data-art="🌌"
+           data-artbg="#110a00"
+           data-accent="#ffcc44">
+        <span class="track-num">3</span>
+        <div class="playing-dot" style="background:#ffcc44;"></div>
+        <div class="track-mini-art" style="background:#110a00;">🌌</div>
+        <div class="track-details">
+          <div class="track-name">Polvo de Estrellas</div>
+          <div class="track-by">El Último Eco</div>
+        </div>
+        <span class="track-dur">5:07</span>
+      </div>
+
+      <!-- CANCIÓN 4 -->
+      <div class="playlist-item"
+           data-index="3"
+           data-title="Río de Cristal"
+           data-artist="Mareas Vivas"
+           data-dur="3:44"
+           data-genre="Folk / Acústico"
+           data-color="#001828"
+           data-text="#44ccff"
+           data-art="🎸"
+           data-artbg="#001220"
+           data-accent="#44ccff">
+        <span class="track-num">4</span>
+        <div class="playing-dot" style="background:#44ccff;"></div>
+        <div class="track-mini-art" style="background:#001220;">🎸</div>
+        <div class="track-details">
+          <div class="track-name">Río de Cristal</div>
+          <div class="track-by">Mareas Vivas</div>
+        </div>
+        <span class="track-dur">3:44</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Script separado -->
+  <script src="script.js"></script>
+
+</body>
+</html>
